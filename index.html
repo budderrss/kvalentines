@@ -31,6 +31,7 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+        position: relative;
     }
 
     button {
@@ -40,16 +41,19 @@
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
+        position: relative;
     }
 
     #yesBtn {
         background: #e63946;
         color: white;
+        z-index: 10; /* always above no button */
     }
 
     #noBtn {
         background: #adb5bd;
         color: black;
+        z-index: 5; /* below yes button */
     }
 
     .gif {
@@ -77,7 +81,6 @@ let yesScale = 1;
 let noScale = 1;
 let noClicks = 0;
 
-/* 🔥 No button text stages */
 const noTexts = [
     "No 😅",
     "Think for a min and pick again 😬",
@@ -88,7 +91,6 @@ const noTexts = [
     "PLEASEEEEE 🥺"
 ];
 
-/* 🎥 Your gifs (unchanged) */
 const gifs = [
     "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXFjcHE2cXZ2MzlvaXhyazY2Zjh1MDJrZWFlaDI4aXVldjl4YWthNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif",
     "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXEwcHpiZHJ4cXBud296ZXoybHVjenhibXh3eGRnMDByYzAxbGVlNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KwqFBuBC76GEMeXMHu/giphy.gif",
@@ -121,16 +123,19 @@ noBtn.addEventListener("click", () => {
     gifDisplay.src = gifs[gifIndex];
     gifDisplay.style.display = "block";
 
-    // if yes eclipses no
+    // if yes eclipses no fully
     if (yesScale > 6) {
-        noBtn.style.display = "none";
-        yesBtn.style.width = "100%";
-        yesBtn.style.height = "100%";
-        yesBtn.style.fontSize = "40px";
+        noBtn.style.opacity = "0";
+        noBtn.style.pointerEvents = "none";
+
+        yesBtn.style.width = "100vw";
+        yesBtn.style.height = "100vh";
+        yesBtn.style.fontSize = "48px";
         yesBtn.style.position = "fixed";
         yesBtn.style.top = "0";
         yesBtn.style.left = "0";
         yesBtn.style.borderRadius = "0";
+        yesBtn.style.zIndex = "9999";
     }
 });
 
