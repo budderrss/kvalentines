@@ -62,7 +62,7 @@
 <body>
 
 <div class="card" id="mainCard">
-    <h1>Will you be my Valentine? 💖</h1>
+    <h1>Will you be my Valentines Babbers? 💖</h1>
 
     <div class="buttons">
         <button id="yesBtn">Yes 💕</button>
@@ -77,11 +77,24 @@ let yesScale = 1;
 let noScale = 1;
 let noClicks = 0;
 
+/* 🔥 No button text stages */
+const noTexts = [
+    "No 😅",
+    "Are you sure? 😳",
+    "Think again 😬",
+    "Please reconsider 🥺",
+    "This feels wrong 😭",
+    "You're breaking my heart 💔",
+    "Last chance 😢",
+    "Destiny says yes 💘"
+];
+
+/* 🎥 Your gifs (unchanged) */
 const gifs = [
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2FhN2M2M2RjNTQxM2M0ZDMxYzM5ZWE4YzI1MTg0NzYxYzM1ODI1ZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYt5jPR6QX5pnqM/giphy.gif",
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDE4ZmFkYzM3M2Y0Y2YzN2FiOTU1OWE4OWY4ZTE5ZDE4ZTZhMjZhODhjZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7btPCcdNniyf0ArS/giphy.gif",
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDA3YzM5ZTM3MTM4NzNmNDUxNTE2ZjNhMzdlZTk4Mjk1ZGI3Y2I1NmI4YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26xBsS8kZLw5K0vKk/giphy.gif",
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTVjNTc3ZjZkZjNhMjhlOGQxYjExM2E2MjJkOTIxMTRhMjM1ZGMxY2QzNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l4FGuhL4U2WyjdkaY/giphy.gif"
+    "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXFjcHE2cXZ2MzlvaXhyazY2Zjh1MDJrZWFlaDI4aXVldjl4YWthNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif",
+    "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXEwcHpiZHJ4cXBud296ZXoybHVjenhibXh3eGRnMDByYzAxbGVlNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KwqFBuBC76GEMeXMHu/giphy.gif",
+    "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDh4eDF4c2Z3NnVvaWwwNDh4MHZmNHlrYjJld2dnZGpkYXM1aTJrZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ewq2ZiQMWvGffIMRTz/giphy.gif",
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGpocTdrZGI3Z3dxaDFobmljYnBuYzZjNDhlYzlnZG1vcGp1bTNobSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ytu2GUYbvhz7zShGwS/giphy.gif"
 ];
 
 const yesBtn = document.getElementById("yesBtn");
@@ -98,17 +111,27 @@ noBtn.addEventListener("click", () => {
     noBtn.style.transform = `scale(${noScale})`;
     yesBtn.style.transform = `scale(${yesScale})`;
 
+    // change no button text
+    const textIndex = noClicks % noTexts.length;
+    noBtn.innerText = noTexts[textIndex];
+
     // show gif
     const gifIndex = noClicks % gifs.length;
     gifDisplay.src = gifs[gifIndex];
     gifDisplay.style.display = "block";
 
     // if yes eclipses no
-    if (yesScale > 8) {
+    if (yesScale > 6) {
         noBtn.style.display = "none";
+        yesBtn.style.width = "100%";
+        yesBtn.style.height = "100%";
+        yesBtn.style.fontSize = "40px";
+        yesBtn.style.position = "fixed";
+        yesBtn.style.top = "0";
+        yesBtn.style.left = "0";
+        yesBtn.style.borderRadius = "0";
     }
 });
-
 
 yesBtn.addEventListener("click", () => {
     document.body.innerHTML = `
@@ -128,14 +151,14 @@ yesBtn.addEventListener("click", () => {
                 max-width: 600px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             ">
-                <h1 style="color:#e63946;">She said YES!!! 💕✈️</h1>
+                <h1 style="color:#e63946;">YAYAYAYAYYYYY!!! 💕✈️</h1>
                 <img src="https://i.imgur.com/9ZQZ5bB.png" style="max-width:100%; border-radius:15px;" />
                 <p style="font-size:20px; margin-top:20px;">
-                    Surprise my love ❤️<br><br>
-                    We're going to New York 🗽✈️<br><br>
-                    Thank you for being my best friend, my safe place, and my forever Valentine.
-                    I can't wait to make memories with you in the city that never sleeps.
-                    Every adventure means more when it's with you.
+                    I'm so excited!! TANK U BABBERS<br><br>
+                    We're going to New York hehe 🗽✈️<br><br>
+                    Thank you for being my best friend, my safe place, and the love of my life.
+                    I can't wait to make memories with you in Neeewwwwww Yorrrrrkkkkkk!
+                    I love you and can't wait to see what's in our future!!!
                 </p>
                 <h2 style="color:#e63946;">Happy Valentine's Day 💖</h2>
             </div>
